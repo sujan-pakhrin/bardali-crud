@@ -32,7 +32,10 @@ const Table = () => {
         <div className="flex justify-center mt-10">
             <div className="text-end max-w-[1300px] w-full flex flex-col gap-8 justify-center">
                 <div className="text-end">
-                    <button onClick={() => navigate('/adduser')} className="bg-[#437EF7] py-2 px-6 rounded-md text-white">
+                    <button
+                        onClick={() => navigate("/adduser")}
+                        className="bg-[#437EF7] py-2 px-6 rounded-md text-white"
+                    >
                         Add User
                     </button>
                 </div>
@@ -72,7 +75,7 @@ const Table = () => {
                                     width: 150,
                                 },
                                 {
-                                    field: "hubby",
+                                    field: "hobby",
                                     headerName: "Hobby",
                                     width: 140,
                                 },
@@ -101,10 +104,7 @@ const Table = () => {
                                     width: 120,
                                     renderCell: () => (
                                         <Button>
-                                            <button
-                                                
-                                                className="bg-red-500 text-white px-6 py-2 rounded-md"
-                                            >
+                                            <button className="bg-red-500 text-white px-6 py-2 rounded-md">
                                                 Delete
                                             </button>
                                         </Button>
@@ -116,6 +116,16 @@ const Table = () => {
                             rowsPerPageOptions={[5]}
                             checkboxSelection
                         />
+                    </div>
+                </div>
+                <div className="px-20 py-7 bg-green-500 shadow-lg shadow-gray-400 absolute top-1 left-[35%] rounded-lg flex flex-col gap-5">
+                    <div >
+
+                    <p>Are sure you want to delete this user</p>
+                    </div>
+                    <div className="flex justify-between ">
+                        <button className="bg-red-500 text-white px-6 py-2 rounded-md">Cancel</button>
+                        <button className="bg-blue-500 text-white px-6 py-2 rounded-md" >Delete</button>
                     </div>
                 </div>
             </div>

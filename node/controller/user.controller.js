@@ -1,7 +1,7 @@
 import db from "../db.js";
 
 export const createUser = (req, res) => {
-    const { name, email, phone, password, hubby, address } = req.body;
+    const { name, email, phone, password, hobby, address } = req.body;
     const sql = "select * from user where email=?";
     db.query(sql, email, (err, result) => {
         if (err) {
@@ -26,14 +26,14 @@ export const createUser = (req, res) => {
                             });
                         } else {
                             const sql =
-                                "insert into user(name,email,password,address,phone,hubby) values(?,?,?,?,?,?)";
+                                "insert into user(name,email,password,address,phone,hobby) values(?,?,?,?,?,?)";
                             const values = [
                                 name,
                                 email,
                                 password,
                                 address,
                                 phone,
-                                hubby,
+                                hobby,
                             ];
                             db.query(sql, values, (err, result) => {
                                 if (err) {
@@ -65,15 +65,15 @@ export const getUserById = (req, res) => {
       const sql="select * from user where user_id=?"
       db.query(sql,id,(err,data)=>{
         if(err) res.send(err)
-            else res.send(data)
+            else res.send(data[0])
       })
 };
 export const updateUser = (req, res) => {
-    const { name, email, password, address, phone, hubby  } = req.body;
+    const { name, email, password, address, phone, hobby  } = req.body;
     const id = parseInt(req.params.id);
 
-    const sql = "UPDATE user SET  name=?, email=?, password=?, address=?, phone=?, hubby=? WHERE user_id=?";
-    const values=[name,email,password,address,phone,hubby,id]
+    const sql = "UPDATE user SET  name=?, email=?, password=?, address=?, phone=?, hobby=? WHERE user_id=?";
+    const values=[name,email,password,address,phone,hobby,id]
 
     db.query(sql, values, (err, result) => {
         if (err) {
